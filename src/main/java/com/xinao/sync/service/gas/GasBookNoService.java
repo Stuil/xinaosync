@@ -1,5 +1,6 @@
 package com.xinao.sync.service.gas;
 
+import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.xinao.sync.entity.gas.GasBookNoEntity;
 import com.baomidou.mybatisplus.extension.service.IService;
 
@@ -13,4 +14,11 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface GasBookNoService extends IService<GasBookNoEntity> {
 
+    GasBookNoEntity getBooks(String communityId);
+
+    GasBookNoEntity getOnes(Wrapper<GasBookNoEntity> queryWrapper);
+
+    boolean saves(GasBookNoEntity bookNoEntity);
+
+    boolean updates(GasBookNoEntity bookNoEntity);
 }
