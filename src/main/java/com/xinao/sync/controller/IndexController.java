@@ -23,6 +23,6 @@ public class IndexController {
     GasUseTypeService typeService;
     @RequestMapping("/index")
     public String index(){
-        return JSONObject.toJSONString(gastypeService.list());
+        return JSONObject.toJSONString(typeService.getList());
     }
 }
