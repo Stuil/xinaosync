@@ -12,5 +12,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @since 2020-09-04
  */
 public interface GasUserChargeRecord2020Service extends IService<GasUserChargeRecord2020Entity> {
-
+    boolean saveOrUpdates(GasUserChargeRecord2020Entity entityList);
 }

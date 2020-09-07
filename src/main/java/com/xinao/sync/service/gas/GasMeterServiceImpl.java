@@ -1,5 +1,7 @@
 package com.xinao.sync.service.gas;
 
+import com.xinao.sync.config.DataSource;
+import com.xinao.sync.config.DataSourceEnum;
 import com.xinao.sync.entity.gas.GasMeterEntity;
 import com.xinao.sync.mapper.gas.GasMeterMapper;
 import com.xinao.sync.service.gas.GasMeterService;
@@ -15,6 +17,10 @@ import org.springframework.stereotype.Service;
  * @since 2020-09-04
  */
 @Service
+@DataSource(DataSourceEnum.DB2)
 public class GasMeterServiceImpl extends ServiceImpl<GasMeterMapper, GasMeterEntity> implements GasMeterService {
-
+    @Override
+    public boolean insertMeter(GasMeterEntity gasMeterEntity) {
+        return this.saveOrUpdate(gasMeterEntity);
+    }
 }

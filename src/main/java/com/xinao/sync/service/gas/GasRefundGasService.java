@@ -12,5 +12,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @since 2020-09-04
  */
 public interface GasRefundGasService extends IService<GasRefundGasEntity> {
-
+    boolean saveOrUpdates(GasRefundGasEntity refundGasEntities);
 }
