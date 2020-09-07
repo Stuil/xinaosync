@@ -287,7 +287,7 @@ public class XinAoDataService {
                     gasMeter.setId(gasUser.getMeterId());
                     gasMeter.setMeterNo("");
                     gasMeter.setSupplier("XINAO");
-                    // fixme  平台创建
+                    // fixme  平台创建   确认表类型
                     gasMeter.setModelId("de22710d9c0e46ceb5433aac577a07e0");
                     gasMeter.setDigit(0);
                     gasMeter.setDelFlag(false);
