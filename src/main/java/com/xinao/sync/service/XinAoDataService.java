@@ -182,16 +182,16 @@ public class XinAoDataService {
                             .and(i -> i.ne("amount", 0).or().ne("cost", 0)).orderByAsc("buy_date"));
 
                     // 购气记录
-                    List<Sale> buyAcc = saleService.list(new QueryWrapper<Sale>().ne("id", users.getId())
-                            .gt("amount", 0).gt("cost", 0).ne("updated", 1)
+                    List<Sale> buyAcc = saleService.list(new QueryWrapper<Sale>().eq("id", users.getId())
+                            .gt("amount", 0).gt("cost", 0).eq("updated", 1)
                             .orderByAsc("buy_date"));
 
                     // 补气记录
-                    List<Sale> mendAcc = saleService.list(new QueryWrapper<Sale>().ne("id", users.getId())
-                            .gt("amount", 0).ne("updated", 3).orderByAsc("buy_date"));
+                    List<Sale> mendAcc = saleService.list(new QueryWrapper<Sale>().eq("id", users.getId())
+                            .gt("amount", 0).eq("updated", 3).orderByAsc("buy_date"));
 
                     // 退气记录
-                    List<Sale> refundAcc = saleService.list(new QueryWrapper<Sale>().ne("id", users.getId())
+                    List<Sale> refundAcc = saleService.list(new QueryWrapper<Sale>().eq("id", users.getId())
                             .lt("amount", 0).orderByAsc("buy_date"));
 
                     // 上次充值时间、金额
@@ -287,7 +287,7 @@ public class XinAoDataService {
                     gasMeter.setMeterNo("");
                     gasMeter.setSupplier("XINAO");
                     // fixme  平台创建   确认表类型
-                    gasMeter.setModelId("de22710d9c0e46ceb5433aac577a07e0");
+                    gasMeter.setModelId("87a6fb48550d47ae9f7f2e7226504edb");
                     gasMeter.setDigit(0);
                     gasMeter.setDelFlag(false);
                     gasMeter.setCardNo(String.valueOf(users.getId()));

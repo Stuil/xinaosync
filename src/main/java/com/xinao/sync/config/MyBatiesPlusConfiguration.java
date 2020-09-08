@@ -9,6 +9,7 @@ import org.apache.ibatis.plugin.Interceptor;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.type.JdbcType;
 import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -35,6 +36,8 @@ import java.util.*;
 @Configuration
 @MapperScan({"com.xinao.sync.mapper","com.xinao.sync.mapper.*"})
 public class MyBatiesPlusConfiguration {
+    @Autowired
+    ProperConfig properConfig;
 
     /*
      * 分页插件，自动识别数据库类型
@@ -109,7 +112,9 @@ public class MyBatiesPlusConfiguration {
         configuration.setMapUnderscoreToCamelCase(true);
         configuration.setCacheEnabled(false);
         // sql 打印
-       // configuration.setLogImpl(org.apache.ibatis.logging.stdout.StdOutImpl.class);
+        if(properConfig.getIsLogImpl()==1){
+            configuration.setLogImpl(org.apache.ibatis.logging.stdout.StdOutImpl.class);
+        }
         sqlSessionFactory.setConfiguration(configuration);
         sqlSessionFactory.setPlugins(new Interceptor[]{ //PerformanceInterceptor(),OptimisticLockerInterceptor()
                 paginationInterceptor() //添加分页功能
