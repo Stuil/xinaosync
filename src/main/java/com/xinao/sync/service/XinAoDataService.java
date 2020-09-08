@@ -83,9 +83,10 @@ public class XinAoDataService {
     @Autowired
     GasRefundGasService refundGasService;
 
-    // FIXME 测试改回卡  确认表类型种类
 
     // FIXME   总购气量总购气金额验证
+
+    // FIXME   购气次数  累计购气量  金额  检查
 
     /**
      * @description: 同步方法
