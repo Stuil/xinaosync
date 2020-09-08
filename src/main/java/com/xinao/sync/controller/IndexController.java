@@ -52,8 +52,8 @@ public class IndexController {
     @RequestMapping("/sync")
     public String sync(Integer id){
         long start = System.currentTimeMillis() / 1000;
-        dataService.dataSync(id);
+        String result=dataService.dataSync(id);
         long end = System.currentTimeMillis() / 1000;
-        return "耗时:"+(end-start);
+        return "<hr/>"+result+"<hr/>"+String.format("耗时:%d秒",end-start);
     }
 }

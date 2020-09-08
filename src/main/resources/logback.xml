@@ -3,7 +3,7 @@
     <!-- %m输出的信息,%p日志级别,%t线程名,%d日期,%c类的全名,,,, -->
     <define name="LOG_PATH" class="com.xinao.sync.config.logs.LogPathProperty" />
   <!--  <property name="LOG_PATH" value="E:/logs/sync"/>-->
-    
+
     <!--设置系统日志目录-->
     <property name="APPDIR" value="logs/xinaosync"/>
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">

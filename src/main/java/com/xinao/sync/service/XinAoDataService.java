@@ -92,7 +92,7 @@ public class XinAoDataService {
      * @date: 2020/9/4
      * @author: zwh
      */
-    public void dataSync(Integer areaId) {
+    public String dataSync(Integer areaId) {
         try {
             AtomicInteger areaCount = new AtomicInteger();
             AtomicInteger bookCount = new AtomicInteger();
@@ -111,7 +111,6 @@ public class XinAoDataService {
             unitList.forEach(unit -> {
                 // 计算小区人数
                 List<Users> usersList = usersService.list(new QueryWrapper<Users>().eq("unit_no", unit.getId()));
-
                 GasAreaCommunityEntity areaCommunity = new GasAreaCommunityEntity();
                 areaCommunity.setId(getUUID());
                 areaCommunity.setName(unit.getName() + AREA_APPEND);
@@ -478,12 +477,21 @@ public class XinAoDataService {
             log.info(countArea);
             log.info("用户成功{}条,水表成功{}条,购气成功{}条,补气成功{}条，退气成功{}条",
                     count, meterCount, buyGasCount, mendGasCount, refundGasCount);
-            log.info("用户总{}条,水表总{}条,购气总{}条,补气总{}条，退气总{}条",
+            log.info("用户总数{}条,水表总数{}条,购气总数{}条,补气总数{}条，退气数总{}条",
                     XinAoConsumerCount, XinAoConsumerCount, chargeRecordList.size(),
                     mendGasList.size(), refundGasList.size());
+            String result=String.format("小区总数:%s,本号总数:%s"+"<br/>"+"小区成功:%s,本号成功:%s",
+                    unitList.size(),unitList.size(),areaCount,bookCount);
+            String userResult=String.format("用户成功%s条,水表成功%s条,购气成功%s条,补气成功%s条,退气成功%s条",
+                    count, meterCount, buyGasCount, mendGasCount, refundGasCount);
+            String userCountResult=String.format("用户总数%s条,水表总数%s条,购气总数%s条,补气总数%s条,退气总数%s条",
+                    XinAoConsumerCount, XinAoConsumerCount, chargeRecordList.size(),
+                    mendGasList.size(), refundGasList.size());
+            return result+"<hr/>"+userCountResult+"<br/>"+userResult;
         } catch (Exception e) {
             e.printStackTrace();
             log.error("异常:{}", e.getMessage());
+            return e.getMessage();
         }
     }
 
