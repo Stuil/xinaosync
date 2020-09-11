@@ -17,9 +17,9 @@ spring:
         maxActive: 20
       db2:
         username: root
-        password: abc123
+        password: Tcp!5678
         driver-class-name: com.mysql.jdbc.Driver
-        url: jdbc:mysql://localhost:3306/gas_zh1?useUnicode=true&serverTimezone=UTC&characterEncoding=utf8
+        url: jdbc:mysql://223.247.222.253:3306/osd_gas?useUnicode=true&serverTimezone=UTC&characterEncoding=utf8
         initialSize: 5
         minIdle: 5
         maxActive: 20
@@ -29,6 +29,8 @@ spring:
 # 是否开启sql打印  0否  1是，仅限在类中配置mybatis/mp
 config:
   isLogImpl: 0
+  # 气表型号
+  modelId: a68f66df6a064b1d99927e4ff06f24ba
 
 
 mybatis-plus:

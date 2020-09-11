@@ -3,6 +3,7 @@ package com.xinao.sync.service;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.xinao.sync.config.ProperConfig;
 import com.xinao.sync.entity.gas.*;
 import com.xinao.sync.entity.xinao.Card;
 import com.xinao.sync.entity.xinao.Sale;
@@ -40,6 +41,9 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class XinAoDataService {
 
     static final String AREA_APPEND = "(新奥)";
+
+    @Autowired
+    ProperConfig properConfig;
 
     @Autowired
     UnitTypeService unitTypeService;
@@ -288,7 +292,7 @@ public class XinAoDataService {
                     gasMeter.setMeterNo("");
                     gasMeter.setSupplier("XINAO");
                     // fixme  平台创建   确认表类型
-                    gasMeter.setModelId("87a6fb48550d47ae9f7f2e7226504edb");
+                    gasMeter.setModelId(properConfig.getModelId());
                     gasMeter.setDigit(0);
                     gasMeter.setDelFlag(false);
                     gasMeter.setCardNo(String.valueOf(users.getId()));

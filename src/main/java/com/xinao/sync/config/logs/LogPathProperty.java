@@ -21,9 +21,9 @@ public class LogPathProperty extends PropertyDefinerBase {
     public String getPropertyValue() {
         String jar_parent = "";
         try {
-            jar_parent = new File(ResourceUtils.getURL("classpath:").getPath())
-                    .getParentFile().getParentFile().getParent();
-        } catch (FileNotFoundException e) {
+            jar_parent = System.getProperty("user.dir");
+            // jar_parent = new File(ResourceUtils.getURL("classpath:").getPath()).getParentFile().getParentFile().getParent();
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return jar_parent;

@@ -24,11 +24,8 @@ public class IndexUtil {
 
     public static void main(String[] args) {
         String jar_parent = "";
-        try {
-            jar_parent = new File(ResourceUtils.getURL("classpath:").getPath())
-                    .getParentFile().getParentFile().getParent();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+            jar_parent = System.getProperty("user.dir");
+            System.out.println(jar_parent);
+
     }
 }
